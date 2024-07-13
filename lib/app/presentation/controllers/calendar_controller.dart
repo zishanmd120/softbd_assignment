@@ -31,9 +31,29 @@ class CalendarController extends GetxController{
     print(response);
     if(response != null){
       todayWorkList = response;
-      print(todayWorkList);
+      getWorkListWithDate(DateTime.now());
       isWorkListLoading.value = false;
     }
+  }
+
+  List<Data> filteredData = [];
+  List<Data> getWorkListWithDate(DateTime selectedDate) {
+    isWorkListLoading.value = true;
+    filteredData.clear();
+    filteredData.addAll(todayWorkList?.data?.where((element) {
+      DateTime itemDate = DateTime.fromMillisecondsSinceEpoch(int.parse(element.date ?? '') * 1000);
+      return isSameDay(selectedDate, itemDate);
+    }) ?? []);
+    isWorkListLoading.value = false;
+    return filteredData;
+  }
+
+
+  bool isSameDay(DateTime? a, DateTime? b) {
+    if (a == null || b == null) {
+      return false;
+    }
+    return a.year == b.year && a.month == b.month && a.day == b.day;
   }
 
   String getShortDayName(DateTime date) {

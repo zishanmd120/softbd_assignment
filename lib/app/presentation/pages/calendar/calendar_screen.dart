@@ -106,14 +106,18 @@ class CalendarScreen extends GetView<CalendarController> {
                 onDaySelected: (selectedDay, focusedDay) {
                   controller.selectedDay.value = selectedDay;
                   controller.focusedDay.value = focusedDay;
+                  controller.getWorkListWithDate(selectedDay);
                 },
                 headerVisible: false,
                 calendarBuilders: CalendarBuilders(
                   defaultBuilder: (context, date, focusDay) {
                     return Center(
                       child: Container(
+                        width: Get.width * 0.1,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 7),
+                          // horizontal: 5,
+                          vertical: 10,
+                        ),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: isSameDay(date, DateTime.now())
@@ -131,6 +135,7 @@ class CalendarScreen extends GetView<CalendarController> {
                               controller.getShortDayName(date),
                               style: const TextStyle(fontSize: 12),
                             ),
+                            const SizedBox(height: 3,),
                             Text(
                               Helpers().convertEnglishNumberToBengali(
                                   date.day.toString()),
@@ -143,12 +148,15 @@ class CalendarScreen extends GetView<CalendarController> {
                   selectedBuilder: (context, date, focusDay) {
                     return Center(
                       child: Container(
+                        width: Get.width * 0.1,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 7),
+                          // horizontal: 5,
+                          vertical: 10,
+                        ),
                         decoration: BoxDecoration(
                           color: isSameDay(date, DateTime.now())
                               ? Colors.green
-                              : Colors.blue,
+                              : Colors.yellowAccent,
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: Column(
@@ -158,6 +166,7 @@ class CalendarScreen extends GetView<CalendarController> {
                             Text(
                               controller.getShortDayName(date),
                             ),
+                            const SizedBox(height: 3,),
                             Text(
                               Helpers().convertEnglishNumberToBengali(
                                 date.day.toString(),
@@ -171,8 +180,11 @@ class CalendarScreen extends GetView<CalendarController> {
                   todayBuilder: (context, date, focusDay) {
                     return Center(
                       child: Container(
+                        width: Get.width * 0.1,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 7),
+                          // horizontal: 5,
+                          vertical: 10,
+                        ),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: isSameDay(date, DateTime.now())
@@ -189,6 +201,7 @@ class CalendarScreen extends GetView<CalendarController> {
                             Text(
                               controller.getShortDayName(date),
                             ),
+                            const SizedBox(height: 3,),
                             Text(
                               Helpers().convertEnglishNumberToBengali(
                                 date.day.toString(),
@@ -202,8 +215,10 @@ class CalendarScreen extends GetView<CalendarController> {
                   outsideBuilder: (context, date, focusDay) {
                     return Center(
                       child: Container(
+                        width: Get.width * 0.1,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 7),
+                          vertical: 10,
+                        ),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: isSameDay(date, DateTime.now())
@@ -220,6 +235,7 @@ class CalendarScreen extends GetView<CalendarController> {
                             Text(
                               controller.getShortDayName(date),
                             ),
+                            const SizedBox(height: 3,),
                             Text(
                               Helpers().convertEnglishNumberToBengali(
                                 date.day.toString(),
@@ -272,17 +288,16 @@ class CalendarScreen extends GetView<CalendarController> {
                   Expanded(
                     child: Obx(() => controller.isWorkListLoading.value ? const CustomListShimmer(count: 7,) : ListView.builder(
                       shrinkWrap: true,
-                      itemCount: controller.todayWorkList?.data?.length,
+                      itemCount: controller.filteredData.length,
                       physics: const AlwaysScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        var item =
-                        controller.todayWorkList?.data?[index];
+                        var item = controller.filteredData[index];
                         return Row(
                           mainAxisAlignment:
                           MainAxisAlignment.spaceAround,
                           children: [
                             Text(
-                              '${controller.getDayTime(item?.date ?? '')}',
+                              '${controller.getDayTime(item.date ?? '')}',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize: Get.width * 0.038,),
                             ),
@@ -321,7 +336,7 @@ class CalendarScreen extends GetView<CalendarController> {
                                         const SizedBox(width: 5,),
                                         Text(
                                           controller.getTime(
-                                              item?.date ?? ''),
+                                              item.date ?? ''),
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: Get.width * 0.038,
@@ -331,7 +346,7 @@ class CalendarScreen extends GetView<CalendarController> {
                                     ),
                                     const SizedBox(height: 5,),
                                     Text(
-                                      item?.name ?? '',
+                                      item.name ?? '',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: Get.width * 0.035,
@@ -340,7 +355,7 @@ class CalendarScreen extends GetView<CalendarController> {
                                     ),
                                     const SizedBox(height: 6,),
                                     Text(
-                                      item?.category ?? '',
+                                      item.category ?? '',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: Get.width * 0.032,
@@ -355,7 +370,7 @@ class CalendarScreen extends GetView<CalendarController> {
                                           child: Image.asset('assets/icons/map.png', width: 15, height: 15, color: Colors.white,),
                                         ),
                                         Text(
-                                          item?.location ?? '',
+                                          item.location ?? '',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: Get.width * 0.032,

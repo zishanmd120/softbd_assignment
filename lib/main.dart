@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:softbd_assignment/app/config/injection/bottom_nav_binding.dart';
 import 'package:softbd_assignment/app/config/router/app_pages.dart';
 
-void main() async{
+void main(){
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
@@ -21,9 +22,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'NotoSerifBengali'
       ),
-      // home: const BottomNavSection(),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.pages,
+      initialBinding: BottomNavBinding(),
     );
   }
 }

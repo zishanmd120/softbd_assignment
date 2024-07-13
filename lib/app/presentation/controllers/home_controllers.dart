@@ -17,13 +17,6 @@ class HomeController extends GetxController{
     percentCalculation(nextDate2, nextDate1);
   }
 
-  bool isSameDay(DateTime? a, DateTime? b) {
-    if (a == null || b == null) {
-      return false;
-    }
-    return a.year == b.year && a.month == b.month && a.day == b.day;
-  }
-
   convertToBengali(formatItem) => Helpers().convertEnglishNumberToBengali(formatItem);
 
   List<String> newDifference(DateTime from, DateTime to) {
@@ -47,18 +40,12 @@ class HomeController extends GetxController{
     String monthsStr = months.toString().padLeft(2, '0');
     String daysStr = days.toString().padLeft(2, '0');
 
-
-    // print(["$years", "$months", "$days"]);
-    // print(["$yearsStr", "$monthsStr", "$daysStr"]);
-    // return ["$years", "$months", "$days"];
     formattedList.add(yearsStr[0]);
     formattedList.add(yearsStr[1]);
     formattedList.add(monthsStr[0]);
     formattedList.add(monthsStr[1]);
     formattedList.add(daysStr[0]);
     formattedList.add(daysStr[1]);
-    // return ["$yearsStr", "$monthsStr", "$daysStr"];
-    print(formattedList);
     return formattedList;
   }
 
@@ -82,13 +69,7 @@ class HomeController extends GetxController{
   percentCalculation(DateTime from, DateTime to){
     final difference = to.difference(from).inDays;
     final difference2 = DateTime.now().difference(from).inDays;
-    print(difference);
-    print(difference2);
-    print(difference / difference2);
-    print((difference2 / difference) * 100);
     dateProgress = (difference2 / difference) * 100;
-    print(dateProgress);
-    // return difference / difference;
   }
 }
 

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:softbd_assignment/app/presentation/controllers/calendar_controller.dart';
 import 'package:softbd_assignment/app/presentation/controllers/home_controllers.dart';
@@ -6,19 +7,19 @@ import '../pages/calendar/calendar_screen.dart';
 
 class BottomNavController extends GetxController{
 
-  RxInt selectedScreen = 0.obs;
+  final RxInt selectedScreen = 0.obs;
 
-  List screenList = [
+  List<Widget> screenList = [
     const HomeScreen(),
     const CalendarScreen(),
-    const HomeScreen(),
-    const CalendarScreen(),
+    const SizedBox(),
+    const SizedBox(),
   ];
 
   @override
   void onInit() {
-    loadBinding(selectedScreen.value);
     super.onInit();
+    loadBinding(selectedScreen.value);
   }
 
   loadBinding(int index){
@@ -30,10 +31,10 @@ class BottomNavController extends GetxController{
         Get.put<CalendarController>(CalendarController());
         break;
       case 2:
-        Get.put<HomeController>(HomeController());
+        // Get.put<HomeController>(HomeController());
         break;
       case 3:
-        Get.put<CalendarController>(CalendarController());
+        // Get.put<CalendarController>(CalendarController());
         break;
     }
   }
