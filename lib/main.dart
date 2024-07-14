@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:softbd_assignment/app/config/injection/bottom_nav_binding.dart';
 import 'package:softbd_assignment/app/config/router/app_pages.dart';
 
 void main(){
@@ -24,7 +23,6 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.pages,
-      initialBinding: BottomNavBinding(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:softbd_assignment/app/presentation/controllers/calendar_controller.dart';
+import '../../../utils/constants/height_width.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/custom_textfield.dart';
 
@@ -84,13 +85,13 @@ class AddNewTimeline extends GetView<CalendarController> {
                           Image.asset('assets/images/success.png', height: 100, width: 100,),
                           const SizedBox(height: 10,),
                           Text('নতুন অনুচ্ছেদ সংরক্ষন', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w700,
-                            fontSize: Get.width * 0.05,
+                            fontSize: screenWidth(context) * 0.05,
                           ),),
                           const SizedBox(height: 5,),
                           const Text('আপনার সময়রেখাতে নতুন অনুচ্ছেদ সংরক্ষণ সম্পুর্ন হয়েছে', textAlign: TextAlign.center, style: TextStyle(color: Color(0xff6A6A6A),),),
                           const SizedBox(height: 10,),
                           Container(
-                            width: Get.width * 0.6,
+                            width: screenWidth(context) * 0.6,
                             padding: const EdgeInsets.symmetric(vertical: 11.0,),
                             alignment: Alignment.center,
                             decoration: BoxDecoration(

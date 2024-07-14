@@ -7,7 +7,6 @@ class BottomNavSection extends GetView<BottomNavController> {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(BottomNavController());
     return Scaffold(
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),

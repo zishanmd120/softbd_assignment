@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/constants/height_width.dart';
+
 AppBar CustomAppBar({
   required BuildContext context,
   required String title,
@@ -21,7 +23,7 @@ AppBar CustomAppBar({
             ),
           ),
     title: centerTitle
-        ? Text(title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width * 0.045,),)
+        ? Text(title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: screenWidth(context) * 0.045,),)
         : Row(
             children: [
               Image.asset(
@@ -31,7 +33,7 @@ AppBar CustomAppBar({
                 width: 35,
               ),
               const SizedBox(width: 10,),
-              Text(title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width * 0.045,),),
+              Text(title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: screenWidth(context) * 0.045,),),
             ],
           ),
     centerTitle: centerTitle,

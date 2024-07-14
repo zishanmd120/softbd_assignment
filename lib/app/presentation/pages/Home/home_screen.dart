@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:softbd_assignment/app/presentation/widgets/helpers.dart';
+import '../../../utils/constants/height_width.dart';
 import '../../controllers/home_controllers.dart';
 import '../../widgets/custom_drawer.dart';
 import '../../widgets/custom_percent_indicator.dart';
@@ -48,16 +49,16 @@ class HomeScreen extends GetView<HomeController>{
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('মোঃ মোহাইমেনুল রেজা', style: TextStyle(
-                                fontSize: Get.width * 0.05,
+                                fontSize: screenWidth(context) * 0.05,
                                 fontWeight: FontWeight.bold,
                               ),),
-                              Text("সফটবিডি লিমিটেড",  style: TextStyle(fontSize: Get.width * 0.038, height: 1.7,),),
+                              Text("সফটবিডি লিমিটেড",  style: TextStyle(fontSize: screenWidth(context) * 0.038, height: 1.7,),),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Image.asset('assets/icons/map.png', height: 20, width: 20,),
                                   const SizedBox(width: 4,),
-                                  Text("ঢাকা", style: TextStyle(fontSize: Get.width * 0.038,),),
+                                  Text("ঢাকা", style: TextStyle(fontSize: screenWidth(context) * 0.038,),),
                                 ],
                               ),
                             ],
@@ -89,11 +90,11 @@ class HomeScreen extends GetView<HomeController>{
                             child: FittedBox(
                               fit: BoxFit.fitWidth,
                               child: Container(
-                                width: Get.width * 0.18,
+                                width: screenWidth(context) * 0.18,
                                 alignment: Alignment.center,
                                 child: Text(
                                   controller.getTotalTimeElapsed(controller.formattedList),
-                                  style: TextStyle(fontSize: Get.width * 0.033, fontWeight: FontWeight.bold),
+                                  style: TextStyle(fontSize: screenWidth(context) * 0.033, fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.center,
                                 ),
                               ),
@@ -105,7 +106,7 @@ class HomeScreen extends GetView<HomeController>{
                             child: Text("সময় অতিবাহিত",
                               style: TextStyle(
                                 fontWeight: FontWeight.w700,
-                                fontSize: Get.width * 0.045,
+                                fontSize: screenWidth(context) * 0.045,
                               ),
                             ),
                           ),
@@ -124,17 +125,17 @@ class HomeScreen extends GetView<HomeController>{
                           children: [
                             Text("মেয়াদকাল",
                               style: TextStyle(
-                                fontSize: Get.width * 0.043, fontWeight: FontWeight.w700,
+                                fontSize: screenWidth(context) * 0.043, fontWeight: FontWeight.w700,
                               ),
                             ),
                             Row(
                               children: [
-                                Icon(Icons.date_range, size: Get.width * 0.04,),
+                                Icon(Icons.date_range, size: screenWidth(context) * 0.04,),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 3.0),
                                   child: Text("১ই জানুয়ারি ২০২৪ - ৩১ই জানুয়ারি ২০৩০",
                                     style: TextStyle(
-                                      fontSize: Get.width * 0.03,
+                                      fontSize: screenWidth(context) * 0.03,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -145,7 +146,7 @@ class HomeScreen extends GetView<HomeController>{
                             Text("আরও বাকি",
                               style: TextStyle(
                                 // fontSize: 16.0,
-                                fontSize: Get.width * 0.043,
+                                fontSize: screenWidth(context) * 0.043,
                                 color: Colors.red,
                                 fontWeight: FontWeight.w700,
                               ),
@@ -170,7 +171,7 @@ class HomeScreen extends GetView<HomeController>{
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: Get.width * 0.33,
+                  maxCrossAxisExtent: screenWidth(context) * 0.33,
                   childAspectRatio: 130 / 165,
                 ),
                 itemCount: 6,
@@ -192,7 +193,7 @@ class HomeScreen extends GetView<HomeController>{
                       FittedBox(
                         fit: BoxFit.fitWidth,
                         child: Text("মেনু নং\n০০০০${Helpers().convertEnglishNumberToBengali(index+1)}", textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: Get.width * 0.035, fontWeight: FontWeight.w600,),
+                          style: TextStyle(fontSize: screenWidth(context) * 0.035, fontWeight: FontWeight.w600,),
                         ),
                       ),
                     ],
@@ -229,7 +230,7 @@ class CountDownDate extends StatelessWidget {
               ),
               child: Text(Helpers().convertEnglishNumberToBengali(firstValue),
                 style: TextStyle(
-                  fontSize: Get.width * 0.035,
+                  fontSize: screenWidth(context) * 0.035,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -244,7 +245,7 @@ class CountDownDate extends StatelessWidget {
               ),
               child: Text(Helpers().convertEnglishNumberToBengali(secondValue),
                 style: TextStyle(
-                  fontSize: Get.width * 0.035,
+                  fontSize: screenWidth(context) * 0.035,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -252,7 +253,7 @@ class CountDownDate extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 4,),
-        Text(label, style: TextStyle(fontSize: Get.width * 0.034, fontWeight: FontWeight.w500),),
+        Text(label, style: TextStyle(fontSize: screenWidth(context) * 0.034, fontWeight: FontWeight.w500),),
       ],
     );
   }

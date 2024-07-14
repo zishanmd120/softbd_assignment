@@ -5,6 +5,7 @@ import 'package:softbd_assignment/app/config/router/app_routes.dart';
 import 'package:softbd_assignment/app/presentation/controllers/calendar_controller.dart';
 import 'package:softbd_assignment/app/presentation/widgets/helpers.dart';
 import 'package:table_calendar/table_calendar.dart';
+import '../../../utils/constants/height_width.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/custom_drawer.dart';
 
@@ -35,7 +36,7 @@ class CalendarScreen extends GetView<CalendarController> {
                 Text(
                   'আজ, ১২ জুলাই',
                   style: TextStyle(
-                    fontSize: Get.width * 0.045,
+                    fontSize: screenWidth(context) * 0.045,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -60,7 +61,7 @@ class CalendarScreen extends GetView<CalendarController> {
                     child: Text(
                       'নতুন যোগ করুন',
                       style: TextStyle(
-                        fontSize: Get.width * 0.031,
+                        fontSize: screenWidth(context) * 0.031,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                       ),
@@ -113,7 +114,7 @@ class CalendarScreen extends GetView<CalendarController> {
                   defaultBuilder: (context, date, focusDay) {
                     return Center(
                       child: Container(
-                        width: Get.width * 0.1,
+                        width: screenWidth(context) * 0.1,
                         padding: const EdgeInsets.symmetric(
                           // horizontal: 5,
                           vertical: 10,
@@ -148,7 +149,7 @@ class CalendarScreen extends GetView<CalendarController> {
                   selectedBuilder: (context, date, focusDay) {
                     return Center(
                       child: Container(
-                        width: Get.width * 0.1,
+                        width: screenWidth(context) * 0.1,
                         padding: const EdgeInsets.symmetric(
                           // horizontal: 5,
                           vertical: 10,
@@ -180,7 +181,7 @@ class CalendarScreen extends GetView<CalendarController> {
                   todayBuilder: (context, date, focusDay) {
                     return Center(
                       child: Container(
-                        width: Get.width * 0.1,
+                        width: screenWidth(context) * 0.1,
                         padding: const EdgeInsets.symmetric(
                           // horizontal: 5,
                           vertical: 10,
@@ -215,7 +216,7 @@ class CalendarScreen extends GetView<CalendarController> {
                   outsideBuilder: (context, date, focusDay) {
                     return Center(
                       child: Container(
-                        width: Get.width * 0.1,
+                        width: screenWidth(context) * 0.1,
                         padding: const EdgeInsets.symmetric(
                           vertical: 10,
                         ),
@@ -299,7 +300,7 @@ class CalendarScreen extends GetView<CalendarController> {
                             Text(
                               '${controller.getDayTime(item.date ?? '')}',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: Get.width * 0.038,),
+                              style: TextStyle(fontSize: screenWidth(context) * 0.038,),
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width *
@@ -339,7 +340,7 @@ class CalendarScreen extends GetView<CalendarController> {
                                               item.date ?? ''),
                                           style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: Get.width * 0.038,
+                                            fontSize: screenWidth(context) * 0.038,
                                           ),
                                         ),
                                       ],
@@ -349,7 +350,7 @@ class CalendarScreen extends GetView<CalendarController> {
                                       item.name ?? '',
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: Get.width * 0.035,
+                                        fontSize: screenWidth(context) * 0.035,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -358,7 +359,7 @@ class CalendarScreen extends GetView<CalendarController> {
                                       item.category ?? '',
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: Get.width * 0.032,
+                                        fontSize: screenWidth(context) * 0.032,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -373,7 +374,7 @@ class CalendarScreen extends GetView<CalendarController> {
                                           item.location ?? '',
                                           style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: Get.width * 0.032,
+                                            fontSize: screenWidth(context) * 0.032,
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
@@ -418,7 +419,7 @@ class CustomListShimmer extends StatelessWidget {
             highlightColor: Colors.grey[100]!,
             child: Container(
               height: 130,
-              width: Get.width,
+              width: screenWidth(context),
               margin: const EdgeInsets.only(bottom: 10,),
               decoration: BoxDecoration(
                 color: Colors.white,
